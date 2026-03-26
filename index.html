@@ -25,36 +25,20 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: 'Cormorant Garamond', serif;
-    overflow-x: hidden;
-    cursor: none;
-  }
+  body { background: var(--black); color: var(--text); font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
 
-  /* CURSOR — hidden on touch */
-  .cursor, .cursor-ring { display: none; }
   @media (hover: hover) {
+    body { cursor: none; }
     .cursor {
-      width: 8px; height: 8px;
-      background: var(--cyan); border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      mix-blend-mode: difference;
-      display: block;
+      width: 8px; height: 8px; background: var(--cyan); border-radius: 50%;
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%); mix-blend-mode: difference;
     }
     .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1px solid rgba(0,212,200,0.35); border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: left 0.12s ease-out, top 0.12s ease-out;
-      display: block;
+      width: 36px; height: 36px; border: 1px solid rgba(0,212,200,0.35); border-radius: 50%;
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%); transition: left 0.12s ease-out, top 0.12s ease-out;
     }
-    body { cursor: none; }
   }
 
   /* NAV */
@@ -64,24 +48,17 @@
     display: flex; align-items: center; justify-content: space-between;
     background: linear-gradient(to bottom, rgba(9,9,11,0.95) 0%, transparent 100%);
   }
-  .logo-img {
-    height: 28px; width: auto;
-    opacity: 0.55;
-    transition: opacity 0.3s;
-    filter: brightness(4) saturate(0);
-  }
+  .logo-img { height: 26px; width: auto; opacity: 0.5; filter: brightness(4) saturate(0); transition: opacity 0.3s; }
   .logo-img:hover { opacity: 0.85; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none; transition: color 0.3s;
-    position: relative; white-space: nowrap;
+    font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.3s; position: relative; white-space: nowrap;
   }
   .nav-links a::after {
     content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-    height: 1px; background: var(--cyan);
-    transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+    height: 1px; background: var(--cyan); transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
   }
   .nav-links a:hover { color: var(--text); }
   .nav-links a:hover::after { transform: scaleX(1); }
@@ -92,47 +69,33 @@
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
   }
-  .hero-bg-img {
+  .hero-bg {
     position: absolute; inset: 0;
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
+    background-size: cover; background-position: center 30%; background-repeat: no-repeat;
     filter: brightness(0.45) saturate(1.4);
-    transform: scale(1.04);
-    transition: transform 8s ease;
+    transform: scale(1.04); transition: transform 8s ease;
   }
-  #home:hover .hero-bg-img { transform: scale(1.0); }
+  #home:hover .hero-bg { transform: scale(1.0); }
   .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom,
-      rgba(9,9,11,0.4) 0%,
-      rgba(9,9,11,0.05) 35%,
-      rgba(9,9,11,0.05) 65%,
-      rgba(9,9,11,0.5) 100%);
+    background: linear-gradient(to bottom, rgba(9,9,11,0.45) 0%, rgba(9,9,11,0.0) 30%, rgba(9,9,11,0.0) 70%, rgba(9,9,11,0.55) 100%);
   }
-  .hero-content {
-    position: relative; z-index: 2;
-    text-align: center; padding: 0 20px;
-    width: 100%;
-  }
+  .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; width: 100%; }
   .hero-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 0.45em; color: var(--cyan);
-    text-transform: uppercase; margin-bottom: 28px;
+    font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.45em;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 28px;
     opacity: 0; animation: fadeUp 1s 0.2s ease forwards;
   }
   .hero-logo {
-    width: min(680px, 82vw); height: auto;
-    opacity: 0;
-    animation: fadeUp 1s 0.45s ease forwards;
-    display: block; margin: 0 auto;
+    width: min(660px, 80vw); height: auto;
     filter: brightness(4) saturate(0) contrast(1.1);
+    opacity: 0; animation: fadeUpLogo 1.2s 0.4s ease forwards;
+    display: block; margin: 0 auto;
   }
   .hero-divider {
     width: 40px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 28px auto;
-    opacity: 0; animation: fadeUp 0.8s 0.75s ease forwards;
+    margin: 28px auto; opacity: 0; animation: fadeUp 0.8s 0.75s ease forwards;
   }
   .hero-sub {
     font-size: clamp(14px, 1.6vw, 19px); font-style: italic;
@@ -141,305 +104,137 @@
     opacity: 0; animation: fadeUp 1s 0.9s ease forwards;
   }
   .hero-sub cite {
-    display: block; margin-top: 8px;
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; font-style: normal;
-    letter-spacing: 0.35em; color: var(--muted); text-transform: uppercase;
+    display: block; margin-top: 8px; font-family: 'Space Mono', monospace;
+    font-size: 8px; font-style: normal; letter-spacing: 0.35em; color: var(--muted); text-transform: uppercase;
   }
   .hero-tags {
     display: flex; justify-content: center; flex-wrap: wrap;
-    gap: 0; margin-top: 28px;
-    opacity: 0; animation: fadeUp 1s 1.1s ease forwards;
+    margin-top: 28px; opacity: 0; animation: fadeUp 1s 1.1s ease forwards;
   }
   .hero-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 7px; letter-spacing: 0.3em; color: var(--muted);
-    text-transform: uppercase; padding: 4px 14px;
+    font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.28em;
+    color: var(--muted); text-transform: uppercase; padding: 4px 12px;
     border-right: 1px solid rgba(255,255,255,0.1);
   }
   .hero-tag:last-child { border-right: none; }
   .hero-cta {
-    display: flex; gap: 14px; justify-content: center;
-    flex-wrap: wrap; margin-top: 40px;
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 40px;
     opacity: 0; animation: fadeUp 1s 1.3s ease forwards;
   }
   .btn {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
-    padding: 13px 28px; text-decoration: none;
-    transition: all 0.3s; cursor: none; display: inline-block;
+    font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.26em;
+    text-transform: uppercase; padding: 13px 28px; text-decoration: none;
+    transition: all 0.3s; display: inline-block;
   }
   .btn-primary { background: var(--cyan); color: var(--black); }
   .btn-primary:hover { background: var(--text); }
   .btn-outline { border: 1px solid rgba(237,233,225,0.25); color: var(--text); }
   .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
-
   .scroll-hint {
     position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     opacity: 0; animation: fadeUp 1s 2s ease forwards; z-index: 2;
   }
-  .scroll-line {
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--cyan), transparent);
-    animation: scrollPulse 2.2s ease infinite;
-  }
-  .scroll-hint span {
-    font-family: 'Space Mono', monospace;
-    font-size: 7px; letter-spacing: 0.5em; color: var(--muted); text-transform: uppercase;
-  }
-
-  /* BAND SHOT */
-  #bandshot {
-    position: relative; overflow: hidden;
-    height: 380px;
-  }
-  #bandshot img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center center;
-    filter: brightness(0.75) saturate(1.1); display: block;
-  }
-  .bandshot-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom,
-      rgba(9,9,11,0.55) 0%,
-      rgba(9,9,11,0.0) 30%,
-      rgba(9,9,11,0.0) 70%,
-      rgba(9,9,11,0.65) 100%);
-  }
-  .bandshot-caption {
-    position: absolute; bottom: 24px; right: 40px; text-align: right;
-  }
-  .bandshot-caption p {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 0.3em;
-    color: rgba(237,233,225,0.3); text-transform: uppercase;
-  }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--cyan), transparent); animation: scrollPulse 2.2s ease infinite; }
+  .scroll-hint span { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.5em; color: var(--muted); text-transform: uppercase; }
 
   /* ABOUT */
   #about { background: var(--dark); padding: 100px 48px; }
-  .about-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
-  }
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.5em; color: var(--cyan);
-    text-transform: uppercase; margin-bottom: 18px;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(44px, 6vw, 84px);
-    letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 44px;
-  }
-  .press-quote {
-    font-size: clamp(16px, 1.8vw, 20px); font-style: italic;
-    line-height: 1.65; color: var(--gold);
-    border-left: 2px solid var(--cyan);
-    padding-left: 24px; margin-bottom: 14px;
-  }
-  .press-source {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.35em; color: var(--muted);
-    text-transform: uppercase; padding-left: 24px; margin-bottom: 48px;
-  }
+  .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.5em; color: var(--cyan); text-transform: uppercase; margin-bottom: 18px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 6vw, 84px); letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 44px; }
+  .press-quote { font-size: clamp(16px, 1.8vw, 20px); font-style: italic; line-height: 1.65; color: var(--gold); border-left: 2px solid var(--cyan); padding-left: 24px; margin-bottom: 14px; }
+  .press-source { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.35em; color: var(--muted); text-transform: uppercase; padding-left: 24px; margin-bottom: 48px; }
   .about-text { font-size: 16px; line-height: 1.95; color: rgba(237,233,225,0.65); }
   .about-text em { color: var(--gold); font-style: italic; }
-  .about-stats {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px;
-  }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
   .stat { background: var(--grey); padding: 26px 22px; }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 44px; letter-spacing: 0.03em; line-height: 1; color: var(--cyan);
-  }
-  .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 0.28em; color: var(--muted);
-    text-transform: uppercase; margin-top: 6px;
-  }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.03em; line-height: 1; color: var(--cyan); }
+  .stat-label { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.28em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
 
   /* BIOGRAPHY */
   #biography { background: var(--black); padding: 100px 48px; }
   .bio-header { max-width: 1100px; margin: 0 auto 52px; }
   .bio-grid { max-width: 1100px; margin: 0 auto; display: grid; gap: 3px; }
-  .bio-card {
-    display: grid; grid-template-columns: 260px 1fr;
-    background: var(--grey); overflow: hidden;
-    transition: background 0.35s; position: relative;
-  }
-  .bio-card::before {
-    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
-    transform: scaleY(0); transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-    transform-origin: top;
-  }
+  .bio-card { display: grid; grid-template-columns: 260px 1fr; background: var(--grey); overflow: hidden; transition: background 0.35s; position: relative; }
+  .bio-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; transform: scaleY(0); transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); transform-origin: top; }
   .bio-card.skiller::before { background: var(--blue); }
   .bio-card.dimitar::before { background: var(--green); }
   .bio-card.pavel::before   { background: var(--yellow); }
   .bio-card:hover { background: var(--mid); }
   .bio-card:hover::before { transform: scaleY(1); }
-  .bio-photo {
-    width: 260px; height: 320px;
-    object-fit: cover; object-position: center top; display: block;
-    filter: saturate(0.8); transition: filter 0.4s, transform 0.6s;
-  }
+  .bio-photo { width: 260px; height: 320px; object-fit: cover; object-position: center top; display: block; filter: saturate(0.8); transition: filter 0.4s, transform 0.6s; }
   .bio-card:hover .bio-photo { filter: saturate(1.15); transform: scale(1.03); }
   .bio-info { padding: 40px 48px; }
-  .bio-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 38px; letter-spacing: 0.06em; line-height: 1; margin-bottom: 6px;
-  }
-  .bio-role {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 24px;
-  }
+  .bio-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.06em; line-height: 1; margin-bottom: 6px; }
+  .bio-role { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 24px; }
   .bio-card.skiller .bio-role { color: var(--blue); }
   .bio-card.dimitar .bio-role { color: var(--green); }
   .bio-card.pavel   .bio-role { color: var(--yellow); }
   .bio-text { font-size: 14px; line-height: 1.9; color: rgba(237,233,225,0.65); }
-  .bio-closing {
-    max-width: 1100px; margin: 3px auto 0;
-    background: var(--grey); padding: 40px 48px;
-  }
-  .bio-closing p {
-    font-size: 17px; line-height: 1.9;
-    color: rgba(237,233,225,0.6); font-style: italic;
-  }
+  .bio-closing { max-width: 1100px; margin: 3px auto 0; background: var(--grey); padding: 40px 48px; }
+  .bio-closing p { font-size: 17px; line-height: 1.9; color: rgba(237,233,225,0.6); font-style: italic; }
 
   /* VIDEOS */
   #videos { background: var(--dark); padding: 100px 48px; }
   .videos-inner { max-width: 900px; margin: 0 auto; }
-  .video-list { display: grid; gap: 0; }
   .video-featured { aspect-ratio: 16/9; background: var(--grey); overflow: hidden; }
   .video-featured iframe { width: 100%; height: 100%; border: none; display: block; }
-  .video-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--muted); padding: 16px 0 32px;
-    border-bottom: 1px solid var(--grey); margin-bottom: 32px;
-  }
-  .concert-banner {
-    background: var(--grey); padding: 40px 48px;
-    display: flex; align-items: center; gap: 48px;
-    transition: background 0.3s; margin-top: 32px;
-  }
+  .video-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); padding: 16px 0 32px; border-bottom: 1px solid var(--grey); margin-bottom: 32px; }
+  .concert-banner { background: var(--grey); padding: 40px 48px; display: flex; align-items: center; gap: 48px; transition: background 0.3s; margin-top: 32px; }
   .concert-banner:hover { background: var(--mid); }
   .concert-info { flex: 1; }
-  .concert-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px; letter-spacing: 0.05em; line-height: 1; margin-bottom: 10px;
-  }
-  .concert-title span {
-    display: block; font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 0.4em; color: var(--magenta);
-    font-weight: 400; margin-bottom: 6px;
-  }
-  .concert-desc {
-    font-size: 14px; line-height: 1.75;
-    color: rgba(237,233,225,0.55); max-width: 480px;
-  }
-  .btn-concert {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
-    padding: 13px 26px; border: 1px solid var(--magenta);
-    color: var(--magenta); text-decoration: none;
-    transition: all 0.3s; white-space: nowrap; cursor: none;
-  }
+  .concert-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.05em; line-height: 1; margin-bottom: 10px; }
+  .concert-title span { display: block; font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.4em; color: var(--magenta); font-weight: 400; margin-bottom: 6px; }
+  .concert-desc { font-size: 14px; line-height: 1.75; color: rgba(237,233,225,0.55); max-width: 480px; }
+  .btn-concert { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; padding: 13px 26px; border: 1px solid var(--magenta); color: var(--magenta); text-decoration: none; transition: all 0.3s; white-space: nowrap; }
   .btn-concert:hover { background: var(--magenta); color: var(--black); }
 
   /* CONNECT */
   #connect { background: var(--black); padding: 110px 48px; text-align: center; }
   .connect-inner { max-width: 520px; margin: 0 auto; }
-  .connect-inner p {
-    font-size: 16px; line-height: 1.85;
-    color: rgba(237,233,225,0.5); margin-bottom: 44px;
-  }
-  .social-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
-  .social-btn {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
-    padding: 13px 24px; border: 1px solid var(--mid);
-    color: var(--muted); text-decoration: none; transition: all 0.3s; cursor: none;
-  }
+  .connect-inner > p { font-size: 16px; line-height: 1.85; color: rgba(237,233,225,0.5); margin-bottom: 44px; }
+  .social-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .social-btn { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; padding: 13px 24px; border: 1px solid var(--mid); color: var(--muted); text-decoration: none; transition: all 0.3s; }
   .social-btn:hover { border-color: var(--cyan); color: var(--cyan); }
-  .contact-email {
-    display: inline-block; margin-top: 20px;
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
-    padding: 13px 32px;
-    background: transparent;
-    border: 1px solid var(--cyan);
-    color: var(--cyan); text-decoration: none;
-    transition: all 0.3s; cursor: none;
-  }
+  .contact-email { display: inline-block; margin-top: 8px; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; padding: 13px 32px; border: 1px solid var(--cyan); color: var(--cyan); text-decoration: none; transition: all 0.3s; }
   .contact-email:hover { background: var(--cyan); color: var(--black); }
 
   /* FOOTER */
-  footer {
-    background: var(--dark); padding: 24px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-top: 1px solid var(--grey);
-  }
-  .footer-logo {
-    height: 20px; width: auto;
-    opacity: 0.3;
-    filter: brightness(4) saturate(0);
-  }
-  .footer-copy {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase;
-  }
+  footer { background: var(--dark); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--grey); }
+  .footer-logo { height: 20px; width: auto; opacity: 0.3; filter: brightness(4) saturate(0); }
+  .footer-copy { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; }
 
   /* REVEAL */
-  .reveal {
-    opacity: 0; transform: translateY(32px);
-    transition: opacity 0.85s ease, transform 0.85s ease;
-  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.85s ease, transform 0.85s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scrollPulse {
-    0%,100% { opacity: 1; } 50% { opacity: 0.25; }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUpLogo { from { opacity: 0; transform: translateY(22px); } to { opacity: 0.9; transform: none; } }
+  @keyframes scrollPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
 
   /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
-    .logo-img { height: 22px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 8px; letter-spacing: 0.15em; }
-
-    #home { min-height: 100svh; }
-
-    #bandshot { height: 320px; }
-    .bandshot-caption { right: 20px; bottom: 16px; }
-    .bandshot-caption p { font-size: 7px; letter-spacing: 0.2em; }
-
+    .logo-img { height: 20px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 8px; letter-spacing: 0.14em; }
     #about { padding: 72px 24px; }
     .about-inner { grid-template-columns: 1fr; gap: 48px; }
-
     #biography { padding: 72px 24px; }
     .bio-card { grid-template-columns: 1fr; }
     .bio-photo { width: 100%; height: 240px; object-position: center 15%; }
     .bio-info { padding: 28px 24px 36px; }
     .bio-closing { padding: 32px 24px; }
-
     #videos { padding: 72px 24px; }
     .concert-banner { flex-direction: column; gap: 24px; padding: 28px 24px; }
-
     #connect { padding: 72px 24px; }
     footer { flex-direction: column; gap: 12px; text-align: center; padding: 20px; }
     .hero-cta { flex-direction: column; align-items: center; }
-    .hero-tags { gap: 4px; }
-    .hero-tag { padding: 4px 10px; font-size: 7px; }
   }
-
-  @media (max-width: 480px) {
-    .nav-links { gap: 12px; }
-    .nav-links a { font-size: 7px; }
+  @media (max-width: 420px) {
+    .nav-links a { font-size: 7px; letter-spacing: 0.1em; }
+    .nav-links { gap: 10px; }
   }
 </style>
 </head>
@@ -448,7 +243,6 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
   <a href="#home"><img src="Clavexperience%20-%20Logo_Noise%20on%20black.png" alt="Clavexperience" class="logo-img"></a>
   <ul class="nav-links">
@@ -460,9 +254,8 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="home">
-  <div class="hero-bg-img" style="background-image: url('Clavexperience_Cover_3000x3000smallpx.jpg');"></div>
+  <div class="hero-bg" style="background-image: url('Clavexperience_Cover_3000x3000smallpx.jpg');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Sofia, Bulgaria · Electronic · Jazz · Improv</div>
@@ -490,23 +283,11 @@
   </div>
 </section>
 
-<!-- BAND SHOT -->
-<div id="bandshot">
-  <img src="band.png" alt="Clavexperience — SkilleR, Pavel Terziyski, Dimitar Gorchakov">
-  <div class="bandshot-overlay"></div>
-  <div class="bandshot-caption">
-    <p>SkilleR · Pavel Terziyski · Dimitar Gorchakov</p>
-  </div>
-</div>
-
-<!-- ABOUT -->
 <section id="about">
   <div class="about-inner">
     <div class="reveal">
       <div class="section-label">Press</div>
-      <blockquote class="press-quote">
-        "..the group that gets the originality prize is Clavexperience, a trio fronted by vocalist Pavel Terziyski that weaves together scat, beatboxing and a rainbow of keyboards and electronic soundscapes.."
-      </blockquote>
+      <blockquote class="press-quote">"..the group that gets the originality prize is Clavexperience, a trio fronted by vocalist Pavel Terziyski that weaves together scat, beatboxing and a rainbow of keyboards and electronic soundscapes.."</blockquote>
       <div class="press-source">Kevin Le Gendre — JAZZWISE</div>
       <p class="about-text">
         Clavexperience is an electro band of three, mixing beatbox, synths and vocals. Their performance relies on improvising much of their material from scratch, blending electronic music and jazz. Each performer is a unique artist, part of this amazing experience — the Clavexperience.
@@ -519,37 +300,28 @@
     <div class="reveal" style="transition-delay:0.15s">
       <div class="section-label">The Band</div>
       <div class="section-title">SOUND<br>&amp;<br>EXPERIENCE</div>
-      <div class="about-stats" style="grid-template-columns:1fr 1fr;">
-        <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Artists</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">1st</div>
-          <div class="stat-label">Bulgarian Project at jazzahead!</div>
-        </div>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Artists</div></div>
+        <div class="stat"><div class="stat-num">1st</div><div class="stat-label">Bulgarian Project at jazzahead!</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BIOGRAPHY -->
 <section id="biography">
   <div class="bio-header">
     <div class="section-label">The Artists</div>
     <div class="section-title">WHO WE ARE</div>
   </div>
   <div class="bio-grid">
-
     <div class="bio-card skiller reveal">
-      <img class="bio-photo" src="SKILLER.jpg" alt="SkilleR — Alexander Deyanov">
+      <img class="bio-photo" src="SKILLER.jpg" alt="SkilleR">
       <div class="bio-info">
         <div class="bio-name">SkilleR</div>
         <div class="bio-role">Beatbox · Alexander Deyanov</div>
         <p class="bio-text">SkilleR (Alexander Deyanov) is a beatboxer from Sofia, Bulgaria. Known as the 'fast mouth' from the East, he has brought the art of beatboxing to mass attention in Bulgaria. In 2012 SkilleR became world champion of Beatbox Battle World Championship (BBBWC) in Berlin. Another significant highlight of his career is the successful collaboration with the Grammy winning choir — The Mystery of the Bulgarian Voices and Lisa Gerrard in the album 'BooCheeMish' (2018). With more than 70 000 000 views on YouTube and over 200 000 followers in the social networks, SkilleR is a well known artist in the world. Despite his age he has been on stage in countries from 4 different continents. Alexander takes his beatboxing beyond the traditional hip hop influences into a much wider range of contemporary styles.</p>
       </div>
     </div>
-
     <div class="bio-card dimitar reveal" style="transition-delay:0.1s">
       <img class="bio-photo" src="DIMITAR.jpg" alt="Dimitar Gorchakov">
       <div class="bio-info">
@@ -558,7 +330,6 @@
         <p class="bio-text">Dimitar Gorchakov is a Bulgarian pianist who started playing classical music on the piano at a young age, winning awards in national and international competitions. The pianist's current and future projects involve creating original jazz and electronic music, using synthesizers and acoustic instruments. Gorchakov has given concerts in Bulgaria and Europe, showcasing his debut album for solo piano — "Tomorrow's Past" and continues to create art not only in music, but also in photography. He combines his love for photography and music, creating performances that constantly evolve and challenge the audience to be direct participants. His musical journey took a drastic turn over 10 years ago when he entered the world of jazz music, folklore, electronics and free improvisation. He has participated in many stylistically diverse projects and since 2015 he has been working with Ivo Dimchev, a prominent figure in the contemporary art world. Together they have performed at many festivals across 3 continents.</p>
       </div>
     </div>
-
     <div class="bio-card pavel reveal" style="transition-delay:0.2s">
       <img class="bio-photo" src="PAVEL.jpg" alt="Pavel Terziyski">
       <div class="bio-info">
@@ -567,66 +338,45 @@
         <p class="bio-text">Pavel Terziyski is a unique vocal performing artist whose diverse techniques carry listeners to other lands and deeper levels. From robust, percussive bass lines to soaring melodies, Pavel has spent the past decade and a half performing a broad catalogue of solo and collaborative work with some of the biggest names in the Bulgarian underground, experimental and jazz scenes. Known for his originality and impressive improvising skills, Pavel has entertained audiences around Europe at venues in Germany, U.K., Austria, Norway and the Netherlands. With three solo albums and many collaborations, he stands for uniqueness in self expression and creativity. As a theatre composer he worked on various theatrical performances, and won an IKAR Award for Best Music in 2019 for "Home for Sheep and Dreams", by Zdrava Kamenova.</p>
       </div>
     </div>
-
   </div>
   <div class="bio-closing reveal" style="transition-delay:0.25s">
     <p>The band's ability to blend electronica and jazz, combined with their use of live instrumentation and beatboxing, creates a sound that is both unique and captivating. With their talent and potential, Clavexperience is a band that should not be overlooked by festivals, venues, producers and labels looking for fresh and exciting new talents.</p>
   </div>
 </section>
 
-<!-- VIDEOS -->
 <section id="videos">
   <div class="videos-inner">
     <div class="section-label">Music</div>
     <div class="section-title">WATCH &amp; LISTEN</div>
-    <div class="video-list">
 
-      <div class="video-featured reveal">
-        <iframe src="https://www.youtube.com/embed/35Kngz3HcSM" title="Trails and Trials — Big Banda Small Session" allowfullscreen loading="lazy"></iframe>
+    <div class="video-featured reveal"><iframe src="https://www.youtube.com/embed/35Kngz3HcSM" title="Trails and Trials" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label reveal">Trails and Trials — Big Banda Small Session</div>
+
+    <div class="video-featured reveal"><iframe src="https://www.youtube.com/embed/eJKG2V0Iqrc" title="Timeless Wheel Live" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label reveal">Timeless Wheel — live at AtoJazz Festival</div>
+
+    <div class="video-featured reveal"><iframe src="https://www.youtube.com/embed/um2-mbq95yA" title="Timeless Wheel MV" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label reveal">Timeless Wheel — Original Music Video</div>
+
+    <div class="video-featured reveal"><iframe src="https://www.youtube.com/embed/XmkLUqYl4_o" title="Wings Sofar Sofia" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label reveal">Wings — Sofar Sofia</div>
+
+    <div class="video-featured reveal"><iframe src="https://www.youtube.com/embed/-PPALXAKQNY" title="Urban Tapes" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label reveal">Urban Tapes</div>
+
+    <div class="video-featured reveal"><iframe src="https://www.youtube.com/embed/ISG6DazfCts" title="Skyrocket" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label reveal">Skyrocket — Big Banda Small Session</div>
+
+    <div class="concert-banner reveal">
+      <div class="concert-info">
+        <div class="concert-title"><span>Full Concert Recording</span>Bee Bop Café Plovdiv</div>
+        <p class="concert-desc">An intimate live performance at Bee Bop Café Plovdiv — showcasing the full range of Clavexperience's improvisational power.</p>
       </div>
-      <div class="video-label reveal">Trails and Trials — Big Banda Small Session</div>
-
-      <div class="video-featured reveal">
-        <iframe src="https://www.youtube.com/embed/eJKG2V0Iqrc" title="Timeless Wheel — live at AtoJazz Festival" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-label reveal">Timeless Wheel — live at AtoJazz Festival</div>
-
-      <div class="video-featured reveal">
-        <iframe src="https://www.youtube.com/embed/um2-mbq95yA" title="Timeless Wheel — Original Music Video" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-label reveal">Timeless Wheel — Original Music Video</div>
-
-      <div class="video-featured reveal">
-        <iframe src="https://www.youtube.com/embed/XmkLUqYl4_o" title="Wings — Sofar Sofia" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-label reveal">Wings — Sofar Sofia</div>
-
-      <div class="video-featured reveal">
-        <iframe src="https://www.youtube.com/embed/-PPALXAKQNY" title="Urban Tapes" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-label reveal">Urban Tapes</div>
-
-      <div class="video-featured reveal">
-        <iframe src="https://www.youtube.com/embed/ISG6DazfCts" title="Skyrocket — Big Banda Small Session" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-label reveal">Skyrocket — Big Banda Small Session</div>
-
-      <div class="concert-banner reveal">
-        <div class="concert-info">
-          <div class="concert-title">
-            <span>Full Concert Recording</span>
-            Bee Bop Café Plovdiv
-          </div>
-          <p class="concert-desc">An intimate live performance at Bee Bop Café Plovdiv — showcasing the full range of Clavexperience's improvisational power in an evening-length set.</p>
-        </div>
-        <a href="https://jwp.io/s/ZsRF9jKs?fbclid=IwAR1XxjmpYgom3DDcq3-IFFMoFG1_LgRdLiZvz4463tY2KqHQvCeciM7gsdo" target="_blank" rel="noopener" class="btn-concert">Watch Full Concert →</a>
-      </div>
-
+      <a href="https://jwp.io/s/ZsRF9jKs?fbclid=IwAR1XxjmpYgom3DDcq3-IFFMoFG1_LgRdLiZvz4463tY2KqHQvCeciM7gsdo" target="_blank" rel="noopener" class="btn-concert">Watch Full Concert →</a>
     </div>
   </div>
 </section>
 
-<!-- CONNECT -->
 <section id="connect">
   <div class="connect-inner">
     <div class="section-label">Stay Connected</div>
@@ -637,13 +387,10 @@
       <a href="https://www.instagram.com/clavexperience/" target="_blank" rel="noopener" class="social-btn">Instagram</a>
       <a href="https://www.youtube.com/@Clavexperience" target="_blank" rel="noopener" class="social-btn">YouTube</a>
     </div>
-    <div>
-      <a href="mailto:clavexperience@gmail.com" class="contact-email">✉ clavexperience@gmail.com</a>
-    </div>
+    <a href="mailto:clavexperience@gmail.com" class="contact-email">clavexperience@gmail.com</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <a href="#home"><img src="Clavexperience%20-%20Logo_Noise%20on%20black.png" alt="Clavexperience" class="footer-logo"></a>
   <span class="footer-copy">© 2025 Clavexperience · Sofia, Bulgaria</span>
@@ -652,19 +399,14 @@
 <script>
   const cur = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
-  if (cur) {
+  if (cur && window.matchMedia('(hover: hover)').matches) {
     document.addEventListener('mousemove', e => {
-      cur.style.left = e.clientX + 'px';
-      cur.style.top  = e.clientY + 'px';
-      ring.style.left = e.clientX + 'px';
-      ring.style.top  = e.clientY + 'px';
+      cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
     });
   }
-
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
